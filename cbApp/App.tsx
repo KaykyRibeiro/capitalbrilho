@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { getDatabaseConnection } from './src/database/conexao';
+//import { getDatabaseConnection } from './src/database/conexao';
 
 const App = () => {
   useEffect(() => {
     const checkDatabaseConnection = async () => {
       try {
-        const db = getDatabaseConnection();
+        //const db = getDatabaseConnection();
         console.log('Database opened successfully');
       } catch (error) {
         console.error('Database connection error:', error);
