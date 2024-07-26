@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
+import { View, Text } from 'react-native';
+import { getDatabaseConnection } from './src/database/conexao';
 
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import appStyles from './src/styles/styleApp';
-import { getDatabaseConnection } from './src/modal/conexao';
-
-export default function App() {
-
+const App = () => {
   useEffect(() => {
     const checkDatabaseConnection = async () => {
       try {
-        await getDatabaseConnection();
-        console.log('Database connection verified');
+        const db = getDatabaseConnection();
+        console.log('Database opened successfully');
       } catch (error) {
-        console.error('Database connection error: ');
+        console.error('Database connection error:', error);
       }
     };
 
@@ -20,22 +17,10 @@ export default function App() {
   }, []);
 
   return (
-    <View style={appStyles.container}>
-      <Text style={appStyles.title}>Bem-vindo ao Capital Brilho!</Text>
-      <Text style={appStyles.subtitle}>Por favor, faça login</Text>
-      <View style={appStyles.inputContainer}>
-        <Text style={appStyles.inputLabel}>Email</Text>
-        <TextInput style={appStyles.input} />
-      </View>
-      <View style={appStyles.inputContainer}>
-        <Text style={appStyles.inputLabel}>Senha</Text>
-        <TextInput secureTextEntry style={appStyles.input} />
-      </View>
-      <View style={appStyles.submitContainer}>
-        <Text style={[appStyles.submit, {textAlign: 'center'}]} onPress={() => console.log('Logado !')}>
-          <Text>Avançar</Text>
-        </Text>
-      </View>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Check the console for database connection status.</Text>
     </View>
   );
-}
+};
+
+export default App;
