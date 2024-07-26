@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import appStyles from './src/styles/styleApp';
-
+import { getDatabaseConnection } from './src/modal/conexao';
 
 export default function App() {
+
+  useEffect(() => {
+    const checkDatabaseConnection = async () => {
+      try {
+        await getDatabaseConnection();
+        console.log('Database connection verified');
+      } catch (error) {
+        console.error('Database connection error: ');
+      }
+    };
+
+    checkDatabaseConnection();
+  }, []);
+
   return (
     <View style={appStyles.container}>
       <Text style={appStyles.title}>Bem-vindo ao Capital Brilho!</Text>
