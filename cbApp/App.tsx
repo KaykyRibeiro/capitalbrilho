@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Check the console for database connection status.</Text>
+      <Text>Check the console for database onnection status.</Text>
     </View>
   );
 };
